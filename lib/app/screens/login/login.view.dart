@@ -20,13 +20,13 @@ class LoginScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height * 0.1),
-              Text(
+              const Text(
                 'Selamat Datang,',
                 style: TextStyle(
                   fontSize: 20,
                 ),
               ),
-              Text(
+              const Text(
                 'Log In',
                 style: TextStyle(
                   fontSize: 30,
@@ -41,10 +41,10 @@ class LoginScreen extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  suffixIcon: Icon(Icons.person)
+                  suffixIcon: const Icon(Icons.person)
                 ),
               ),
-              SizedBox(height: 15),
+              const SizedBox(height: 15),
               TextField(
                 controller: controller.passwordController,
                 decoration: InputDecoration(
@@ -52,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  suffixIcon: Icon(Icons.lock)
+                  suffixIcon: const Icon(Icons.lock)
                 ),
                 obscureText: true,
               ),
@@ -67,23 +67,23 @@ class LoginScreen extends StatelessWidget {
                       Get.offAllNamed(AppRoutes.home);
                     } else {
                       Get.dialog(
-                        AlertDialog(
+                        const AlertDialog(
                           content: Text('Username atau Password salah'),
                         ),
                       );
                     }
                   },
-                  child: Text(
-                    'Log In',
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     )
+                  ),
+                  child: const Text(
+                    'Log In',
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               )

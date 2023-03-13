@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:myapp/app/screens/form/form.view.dart';
 
 import '../screens/home/home.view.dart';
 import '../screens/initial/initial.view.dart';
@@ -18,6 +19,10 @@ class AppPages {
     GetPage(
       name: AppRoutes.home,
       page: () => HomeScreen(),
+    ),
+    GetPage(
+      name: AppRoutes.form,
+      page: () => FormScreen(),
     ),
   ];
 }

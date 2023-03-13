@@ -1,37 +1,28 @@
 class Karyawan {
   Karyawan({
     required this.namaLengkap,
+    required this.photo,
     required this.tanggalLahir,
-    required this.alamatFull,
-    required this.agama,
     required this.alamat,
-    required this.rtrw,
-    required this.kelDesa,
-    required this.kecamatan,
-    required this.statusPerkawinan,
     required this.nik,
     required this.tempatLahir,
     required this.jenisKelamin,
-    required this.golDarah,
-    required this.pekerjaan,
+    this.pekerjaan,
     required this.kewarganegaraan,
-    required this.berlakuHingga,
   });
   
-  String nik;
+  int nik;
   String namaLengkap;
+  String photo;
   String tempatLahir;
-  String tanggalLahir;
-  String jenisKelamin;
-  String golDarah;
-  String alamatFull;
+  DateTime tanggalLahir;
+  JenisKelamin jenisKelamin;
   String alamat;
-  String rtrw;
-  String kelDesa;
-  String kecamatan;
-  String agama;
-  String statusPerkawinan;
-  String pekerjaan;
+  String? pekerjaan;
   String kewarganegaraan;
-  String berlakuHingga;
+}
+
+enum JenisKelamin {
+  lakiLaki,
+  perempuan
 }

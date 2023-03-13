@@ -14,10 +14,13 @@ class FormScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool readOnly = Get.arguments?['readOnly'] ?? false;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Form Karyawan'),
         actions: [
+          if (!readOnly)
           IconButton(
             onPressed: () {
               if (controller.tempImage.value == '') {
@@ -48,6 +51,7 @@ class FormScreen extends StatelessWidget {
           child: ListView(
             children: [
               TextFormField(
+                readOnly: readOnly,
                 controller: controller.nikController,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
@@ -66,6 +70,7 @@ class FormScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               TextFormField(
+                readOnly: readOnly,
                 controller: controller.namaController,
                 decoration: InputDecoration(
                   labelText: 'Nama Lengkap',
@@ -84,33 +89,36 @@ class FormScreen extends StatelessWidget {
               const SizedBox(height: 10),
               Obx(
                 () {
-                  return InputDecorator(
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 10,
-                        vertical: 5,
+                  return IgnorePointer(
+                    ignoring: readOnly,
+                    child: InputDecorator(
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        contentPadding: EdgeInsets.symmetric(
+                          horizontal: 10,
+                          vertical: 5,
+                        ),
+                        suffixIcon: Icon(Icons.male)
                       ),
-                      suffixIcon: Icon(Icons.male)
-                    ),
-                    child: DropdownButton<JenisKelamin>(
-                      value: controller.jenisKelamin.value,
-                      onChanged: (JenisKelamin? value) {
-                        if (value == null) {
-                          return;
-                        }
-                        controller.jenisKelamin.value = value;
-                      },
-                      items: JenisKelamin.values.map<DropdownMenuItem<JenisKelamin>>((JenisKelamin value) {
-                        return DropdownMenuItem<JenisKelamin>(
-                          value: value,
-                          child: Text(
-                            value == JenisKelamin.lakiLaki
-                             ? 'Laki - Laki'
-                             : 'Perempuan',
-                            ),
-                        );
-                      }).toList(),
+                      child: DropdownButton<JenisKelamin>(
+                        value: controller.jenisKelamin.value,
+                        onChanged: (JenisKelamin? value) {
+                          if (value == null) {
+                            return;
+                          }
+                          controller.jenisKelamin.value = value;
+                        },
+                        items: JenisKelamin.values.map<DropdownMenuItem<JenisKelamin>>((JenisKelamin value) {
+                          return DropdownMenuItem<JenisKelamin>(
+                            value: value,
+                            child: Text(
+                              value == JenisKelamin.lakiLaki
+                               ? 'Laki - Laki'
+                               : 'Perempuan',
+                              ),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   );
                 }
@@ -120,6 +128,9 @@ class FormScreen extends StatelessWidget {
                 focusNode: AlwaysDisabledFocusNode(),
                 controller: controller.tanggalLahirController,
                 onTap: () {
+                  if (readOnly) {
+                    return;
+                  }
                   controller.selectDate(context);
                 },
                 decoration: InputDecoration(
@@ -138,6 +149,7 @@ class FormScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               TextFormField(
+                readOnly: readOnly,
                 controller: controller.tempatLahirController,
                 decoration: InputDecoration(
                   labelText: 'Tempat Lahir',
@@ -155,6 +167,7 @@ class FormScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               TextFormField(
+                readOnly: readOnly,
                 controller: controller.alamatController,
                 decoration: InputDecoration(
                   labelText: 'Alamat',
@@ -172,6 +185,7 @@ class FormScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               TextFormField(
+                readOnly: readOnly,
                 controller: controller.pekerjaanController,
                 decoration: InputDecoration(
                   labelText: 'Pekerjaan',
@@ -183,6 +197,7 @@ class FormScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               TextFormField(
+                readOnly: readOnly,
                 controller: controller.kewarganegaraanController,
                 decoration: InputDecoration(
                   labelText: 'Kewarganegaraan',
@@ -203,13 +218,19 @@ class FormScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text('Foto'),
-                  const SizedBox(height: 10),
-                  Align(
-                    alignment: Alignment.center,
-                    child: ElevatedButton(
-                      onPressed: controller.pickImage,
-                      child: const Text('Pilih Foto'),
-                    ),
+                  if (!readOnly)
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: 10),
+                      Align(
+                        alignment: Alignment.center,
+                        child: ElevatedButton(
+                          onPressed: controller.pickImage,
+                          child: const Text('Pilih Foto'),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 10),
                   Align(

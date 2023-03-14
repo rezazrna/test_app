@@ -50,6 +50,7 @@ class FormScreen extends StatelessWidget {
           key: _formKey,
           child: ListView(
             children: [
+              const SizedBox(height: 10),
               TextFormField(
                 readOnly: readOnly,
                 controller: controller.nikController,
@@ -252,6 +253,7 @@ class FormScreen extends StatelessWidget {
                       }
                     ),
                   ),
+                  const SizedBox(height: 10),
                 ],
               )
             ],

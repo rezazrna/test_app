@@ -45,8 +45,7 @@ class HomeController extends GetxController {
       alamat: 'Jalan Dewi Sartika No 20 RT 02 Rw 03 Kelurahan Sukaasih Kecamatan Bojongloa Kaler', 
       nik: 33262532, 
       tempatLahir: 'Bandung', 
-      jenisKelamin: JenisKelamin.perempuan, 
-      pekerjaan: 'Pahlawan',
+      jenisKelamin: JenisKelamin.perempuan,
       kewarganegaraan: 'Indonesia',
     ),
     Karyawan(

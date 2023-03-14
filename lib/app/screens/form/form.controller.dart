@@ -46,6 +46,7 @@ class FormController extends GetxController {
         nik: int.parse(nikController.text),
         tempatLahir: tempatLahirController.text,
         jenisKelamin: jenisKelamin.value,
+        pekerjaan: pekerjaanController.text,
         kewarganegaraan: kewarganegaraanController.text,
       ),
     );
@@ -66,6 +67,7 @@ class FormController extends GetxController {
         nik: int.parse(nikController.text),
         tempatLahir: tempatLahirController.text,
         jenisKelamin: jenisKelamin.value,
+        pekerjaan: pekerjaanController.text,
         kewarganegaraan: kewarganegaraanController.text,
       ),
     );

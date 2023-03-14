@@ -99,9 +99,6 @@ class FormController extends GetxController {
     if (newSelectedDate != null) {
       selectedDate = newSelectedDate;
       tanggalLahirController.text = DateFormat('dd-MM-yyyy').format(selectedDate!);
-        // ..selection = TextSelection.fromPosition(TextPosition(
-        //     offset: textEditingController.text.length,
-        //     affinity: TextAffinity.upstream));
     }
   }
 
